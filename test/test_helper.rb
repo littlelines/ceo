@@ -21,9 +21,24 @@ end
 require 'minitest/autorun'
 require 'minitest/spec'
 require 'minitest/reporters'
+require 'capybara/rails'
 
 Minitest::Reporters.use!(Minitest::Reporters::SpecReporter.new)
 
-class ActiveSupport::TestCase
+module TestHelper
   include Minitest::Spec::DSL
+  include Capybara::DSL
+
+  def admin_page(page)
+    visit("admin/#{page}")
+  end
+
+  def admin_exists_for?(page)
+    admin_page(page)
+    last_response.ok?
+  end
+end
+
+class ActiveSupport::TestCase
+  include TestHelper
 end
