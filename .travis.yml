@@ -5,3 +5,14 @@ rvm:
   - 2.1.5
   - jruby
   - rbx
+
+addons:
+  postgresql: "9.3"
+
+services:
+  - postgresql
+
+before_script:
+  - psql -c 'create database dummy_test;' -U postgres
+  - bin/setup
+  - bin/test
