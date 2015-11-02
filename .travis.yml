@@ -15,4 +15,5 @@ services:
 before_script:
   - psql -c 'create database dummy_test;' -U postgres
   - bin/setup
-  - bin/test
+
+script: bin/test
