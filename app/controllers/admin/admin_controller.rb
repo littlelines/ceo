@@ -10,12 +10,6 @@ class Admin::AdminController < ApplicationController
   helper_method :new_thing_path
   helper_method :edit_thing_path
 
-  def dashboard
-    @backorders = Order.backorder
-    @mismatches = Order.all
-    render 'admin/dashboard'
-  end
-
   # GET /things
   # Public: Indexes all things in the model.
   #
