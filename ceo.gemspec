@@ -8,8 +8,8 @@ Gem::Specification.new do |s|
   s.name        = "ceo"
   s.version     = CEO::VERSION.dup
   s.authors     = ['Jesse Herrick']
-  s.email       = ['me@jesse.codes']
-  s.homepage    = "TODO"
+  s.email       = ['jesse@littlelines.com']
+  s.homepage    = 'https://github.com/littlelines/ceo'
   s.summary     = 'An admin tool that puts object oriented design over DSLs.'
   s.description = 'A useful admin tool that gets out of your way'
   s.license     = 'MIT'
