@@ -5,7 +5,7 @@ describe 'routes' do
 
   describe 'apples' do
     def setup
-      Apple.create(name: 'Granny Smith')
+      @apple = Apple.create(name: 'Granny Smith')
     end
 
     it 'index' do
@@ -17,11 +17,11 @@ describe 'routes' do
     end
 
     it 'show' do
-      admin_exists_for? '/apples/1'
+      admin_exists_for? "/apples/#{@apple.id}"
     end
 
     it 'edit' do
-      admin_exists_for? '/apples/1/edit'
+      admin_exists_for? "/apples/#{@apple.id}/edit"
     end
   end
 end
