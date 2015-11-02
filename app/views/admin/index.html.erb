@@ -33,38 +33,38 @@
 
 <nav class="navigation" role="navigation">
   <ul>
-    # First Page
     <% unless @page == 1 %>
+      <!-- First Page -->
       <li>
         <%= link_to('1', thing_page_path(@model_name, @page - 1)) %>
       </li>
     <% end %>
 
-    # Previous Page
     <% if @page > 1 %>
+      <!-- Previous Page -->
       <li>
         <%= link_to("#{page - 1}", thing_page_path(@model_name, @page - 1)) %>
       </li>
     <% end %>
 
-    # Current Page
     <% unless @total_page == 1 %>
+      <!-- Current Page -->
       <li>
         <a><%= @page %></a>
       </li>
     <% end %>
 
-    # Next Page
     <% if @page < @total_pages %>
+      <!-- Next Page -->
       <li>
-        link_to("#{page + 1}", thing_page_path(@model_name, @page + 1))
+        <%= link_to("#{page + 1}", thing_page_path(@model_name, @page + 1)) %>
       </li>
     <% end %>
 
-    # Last Page
     <% unless @page == @total_pages %>
+      <!-- Last Page -->
       <li>
-        link_to("#{@total_pages}", thing_page_path(@model_name, @total_pages))
+        <%= link_to("#{@total_pages}", thing_page_path(@model_name, @total_pages)) %>
       </li>
     <% end %>
   </ul>
