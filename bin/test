@@ -1,1 +1,1 @@
-rake test
+bundle exec rake test
