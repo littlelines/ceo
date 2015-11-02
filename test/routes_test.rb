@@ -1,13 +1,27 @@
 require 'test_helper'
 
-# class RoutesTest < ActiveSupport::TestCase
-  describe 'routes' do
-    include TestHelper
+describe 'routes' do
+  include TestHelper
 
-    it '/apples' do
-      # visit('/admin/apples')
-      # assert last_response.ok?
+  describe 'apples' do
+    def setup
+      Apple.create(name: 'Granny Smith')
+    end
+
+    it 'index' do
       admin_exists_for? '/apples'
     end
+
+    it 'new' do
+      admin_exists_for? '/apples/new'
+    end
+
+    it 'show' do
+      admin_exists_for? '/apples/1'
+    end
+
+    it 'edit' do
+      admin_exists_for? '/apples/1/edit'
+    end
   end
-# end
+end

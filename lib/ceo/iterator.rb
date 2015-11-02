@@ -52,7 +52,7 @@ module CEO
         # TODO: Make all of this into a method.
         # map first-level values to a hash
         keys.each do |key|
-          attr_object[self.acronymize(key)] = thing[key.to_s]
+          attr_object[self.class.acronymize(key)] = thing[key.to_s]
         end
 
         # map nested values to a hash
@@ -68,13 +68,13 @@ module CEO
     def query_eval(scope, query)
       query_parts = query.split('.')
       if query_parts.length > 2
-        title = self.acronymize(query_parts[-2..-1].join(' '))
+        title = self.class.acronymize(query_parts[-2..-1].join(' '))
         resp = 'None' if scope.instance_eval(query_parts[0]).nil? || scope.instance_eval(query_parts[0..1].join('.')).nil?
       elsif query_parts[-1] == 'name'
-        title = self.acronymize(query_parts.join(' '))
+        title = self.class.acronymize(query_parts.join(' '))
         resp = 'None' if scope.instance_eval(query_parts[0]).nil?
       else
-        title = self.acronymize query_parts[-1]
+        title = self.class.acronymize query_parts[-1]
         resp = 'None' if scope.instance_eval(query_parts[0]).nil?
       end
 

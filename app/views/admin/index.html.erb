@@ -1,0 +1,71 @@
+<h1><%= @title %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <% if @things.blank? %>
+        <%= "There are no #{@human_model.downcase.pluralize} in the database." %>
+      <% else %>
+        <% @things.first.each_key do |heading| %>
+          <th>
+            <%= heading %>
+          </th>
+        <% end %>
+      <% end %>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @things.each do |thing| %>
+      <% thing.each do |heading, value| %>
+        <td label="<%= heading %>: ">
+          <%= value %>
+        </td>
+
+        <div class="actions">
+          <td><%= link_to("Edit #{@title}", edit_thing_path(@model_name, thing)) %></td>
+          <td><%= link_to("Show #{@title}", thing_path(@model_name, thing)) %></td>
+        </div>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<nav class="navigation" role="navigation">
+  <ul>
+    # First Page
+    <% unless @page == 1 %>
+      <li>
+        <%= link_to('1', thing_page_path(@model_name, @page - 1)) %>
+      </li>
+    <% end %>
+
+    # Previous Page
+    <% if @page > 1 %>
+      <li>
+        <%= link_to("#{page - 1}", thing_page_path(@model_name, @page - 1)) %>
+      </li>
+    <% end %>
+
+    # Current Page
+    <% unless @total_page == 1 %>
+      <li>
+        <a><%= @page %></a>
+      </li>
+    <% end %>
+
+    # Next Page
+    <% if @page < @total_pages %>
+      <li>
+        link_to("#{page + 1}", thing_page_path(@model_name, @page + 1))
+      </li>
+    <% end %>
+
+    # Last Page
+    <% unless @page == @total_pages %>
+      <li>
+        link_to("#{@total_pages}", thing_page_path(@model_name, @total_pages))
+      </li>
+    <% end %>
+  </ul>
+</nav>

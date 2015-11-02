@@ -5,6 +5,11 @@
 class Admin::AdminController < ApplicationController
   before_action :find_thing, only: [:show, :edit, :update, :destroy]
 
+  helper_method :thing_path
+  helper_method :things_path
+  helper_method :new_thing_path
+  helper_method :edit_thing_path
+
   def dashboard
     @backorders = Order.backorder
     @mismatches = Order.all
@@ -22,7 +27,8 @@ class Admin::AdminController < ApplicationController
     @page = (params[:page] || 1).to_i
     @route_name ||= @controller_name ||= controller_name
 
-    @iterator = CEO::Iterator.new(thing,
+    @iterator = CEO::Iterator.new(
+      thing,
       query: options[:query],
       page: @page,
       per_page: options.fetch(:per_page, 20),
@@ -36,6 +42,7 @@ class Admin::AdminController < ApplicationController
     @total_pages = @iterator.total_pages
 
     @model_name ||= thing.to_s.underscore
+    @human_model = @model_name.humanize
     @title = thing.to_s.titleize.pluralize
     render 'admin/index'
   end
@@ -159,31 +166,53 @@ class Admin::AdminController < ApplicationController
 
   # Private: Returns the path of the thing.
   #
-  # scope - an instance of a thing
+  # object - An instance of a model.
   #
   # Returns the path of the thing.
-  def thing_path(scope, pathname = @controller_name || controller_name)
-    send(:"admin_#{pathname}_path", scope)
+  def thing_path(model, object)
+    id = object['ID'] || object['id']
+    send(:"admin_#{model}_path", id: id)
   end
 
   # Private: Returns the index path of a model.
   #
-  # pathname - thing's name
+  # object - An instance of a model.
   #
   # Returns the path of many things.
-  def things_path(pathname)
-    pathname ||= controller_name
-    send(:"admin_#{pathname.pluralize}_path")
+  def things_path(object)
+    object ||= @route_name || controller_name
+    send(:"admin_#{object.pluralize}_path")
   end
 
-  # @allowed can be used for additional params in child controllers
-
-  def search_params
-    @allowed = [:search_by, :search_term, :order_by, :direction, :page]
-    params.permit(@allowed)
+  # Private
+  #
+  # model - The model name.
+  # object - An instance of a model.
+  #
+  # Returns the edit path of a model.
+  def edit_thing_path(model, object)
+    id = object['ID'] || object['id']
+    send(:"edit_admin_#{model}_path", id: id)
   end
 
-  def processed_params
-    SearchParamsHandler.new(search_params).processed_params
+  # Private
+  #
+  # model - The model name.
+  # object - An instance of a model.
+  #
+  # Returns the new path of a model.
+  def new_thing_path(model, object)
+    id = object['ID'] || object['id']
+    send(:"new_admin_#{model}_path", id: id)
+  end
+
+  # Private
+  #
+  # model - The model name.
+  # page - The page number.
+  #
+  # Returns the paginated path of an object.
+  def page_thing_path(model, page)
+    send(:"page_admin_#{model}_path", page: page)
   end
 end

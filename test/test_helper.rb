@@ -29,13 +29,13 @@ module TestHelper
   include Minitest::Spec::DSL
   include Capybara::DSL
 
-  def admin_page(page)
-    visit("admin/#{page}")
+  def admin_page(named_route)
+    visit("/admin#{named_route}")
   end
 
-  def admin_exists_for?(page)
-    admin_page(page)
-    last_response.ok?
+  def admin_exists_for?(named_route)
+    admin_page(named_route)
+    assert_equal 200, page.status_code
   end
 end
 
