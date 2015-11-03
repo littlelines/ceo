@@ -9,6 +9,7 @@ class Admin::AdminController < ApplicationController
   helper_method :things_path
   helper_method :new_thing_path
   helper_method :edit_thing_path
+  helper_method :thing_page_path
 
   # GET /things
   # Public: Indexes all things in the model.
@@ -206,7 +207,7 @@ class Admin::AdminController < ApplicationController
   # page - The page number.
   #
   # Returns the paginated path of an object.
-  def page_thing_path(model, page)
-    send(:"page_admin_#{model}_path", page: page)
+  def thing_page_path(model, page)
+    send(:"page_admin_#{model.to_s.underscore.pluralize}_path", page: page)
   end
 end

@@ -17,6 +17,7 @@
 
   <tbody>
     <% @things.each do |thing| %>
+      <tr>
       <% thing.each do |heading, value| %>
         <td label="<%= heading %>: ">
           <%= value %>
@@ -27,6 +28,7 @@
           <td><%= link_to("Show #{@title}", thing_path(@model_name, thing)) %></td>
         </div>
       <% end %>
+      </tr>
     <% end %>
   </tbody>
 </table>
@@ -57,7 +59,7 @@
     <% if @page < @total_pages %>
       <!-- Next Page -->
       <li>
-        <%= link_to("#{page + 1}", thing_page_path(@model_name, @page + 1)) %>
+        <%= link_to("#{@page + 1}", thing_page_path(@model_name, @page + 1)) %>
       </li>
     <% end %>
 

@@ -23,7 +23,7 @@ require 'minitest/spec'
 require 'minitest/reporters'
 require 'capybara/rails'
 
-Minitest::Reporters.use!(Minitest::Reporters::SpecReporter.new)
+Minitest::Reporters.use!(Minitest::Reporters::DefaultReporter.new(color: true))
 
 module TestHelper
   include Minitest::Spec::DSL
