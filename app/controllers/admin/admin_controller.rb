@@ -166,7 +166,7 @@ class Admin::AdminController < ApplicationController
   # Returns the path of the thing.
   def thing_path(model, object)
     id = object['ID'] || object['id']
-    send(:"admin_#{model}_path", id: id)
+    send(:"admin_#{model.to_s.underscore.downcase}_path", id: id)
   end
 
   # Private: Returns the index path of a model.
@@ -174,9 +174,9 @@ class Admin::AdminController < ApplicationController
   # object - An instance of a model.
   #
   # Returns the path of many things.
-  def things_path(object)
+  def things_path(object = nil)
     object ||= @route_name || controller_name
-    send(:"admin_#{object.pluralize}_path")
+    send(:"admin_#{object.to_s.pluralize.downcase}_path")
   end
 
   # Private
