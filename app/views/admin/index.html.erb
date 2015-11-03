@@ -17,15 +17,15 @@
 
   <tbody>
     <% @things.each do |thing| %>
-      <tr>
+      <tr id="#{@controller_name}-#{thing.id}">
       <% thing.each do |heading, value| %>
         <td label="<%= heading %>: ">
           <%= value %>
         </td>
 
         <div class="actions">
-          <td><%= link_to("Edit #{@title}", edit_thing_path(@model_name, thing)) %></td>
-          <td><%= link_to("Show #{@title}", thing_path(@model_name, thing)) %></td>
+          <td><%= link_to("Edit", edit_thing_path(@model_name, thing)) %></td>
+          <td><%= link_to("Show", thing_path(@model_name, thing)) %></td>
         </div>
       <% end %>
       </tr>
