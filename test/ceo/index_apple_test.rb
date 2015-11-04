@@ -21,6 +21,12 @@ describe 'apples admin pages' do
         page.has_css?('table thead tr th', text: 'Fruit')
       end
 
+      it 'should have the right HTML IDs' do
+        Apple.all.each do |a|
+          page.has_css?("table tbody tr#apples-#{a.id}")
+        end
+      end
+
       it 'should have all IDs shown' do
         Apple.all.each do |a|
           page.has_css?('table tbody tr td', text: a.id.to_s)

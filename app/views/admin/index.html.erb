@@ -17,7 +17,7 @@
 
   <tbody>
     <% @things.each do |thing| %>
-      <tr id="#{@controller_name}-#{thing.id}">
+      <tr id="<%= "#{@controller_name}-#{thing['ID']}" %>">
       <% thing.each do |heading, value| %>
         <td label="<%= heading %>: ">
           <%= value %>
