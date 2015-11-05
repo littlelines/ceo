@@ -1,11 +1,14 @@
 <h1><%= @title %></h1>
 
+<div>
+  <p><%= link_to "New #{@title.singularize}", new_thing_path(@model_name), id: "new-#{@model_name}" %></p>
+  <p><%= "There are no #{@human_model.downcase.pluralize} in the database." if @things.blank? %></p>
+</div>
+
 <table>
   <thead>
     <tr>
-      <% if @things.blank? %>
-        <%= "There are no #{@human_model.downcase.pluralize} in the database." %>
-      <% else %>
+      <% unless @things.blank? %>
         <% @things.first.each_key do |heading| %>
           <th>
             <%= heading %>
@@ -35,28 +38,30 @@
 
 <nav class="navigation" role="navigation">
   <ul>
-    <% unless @page == 1 %>
+    <% if @page == 1 %>
+      <li><a>1</a></li>
+    <% else %>
       <!-- First Page -->
       <li>
         <%= link_to('1', thing_page_path(@model_name, @page - 1)) %>
       </li>
     <% end %>
 
-    <% if @page > 1 %>
+    <% if @page.to_i > 2 %>
       <!-- Previous Page -->
       <li>
-        <%= link_to("#{page - 1}", thing_page_path(@model_name, @page - 1)) %>
+        <%= link_to("#{@page - 1}", thing_page_path(@model_name, @page - 1)) %>
       </li>
     <% end %>
 
-    <% unless @total_pages == 1 %>
+    <% unless @page == 1 %>
       <!-- Current Page -->
       <li>
         <a><%= @page %></a>
       </li>
     <% end %>
 
-    <% if @page < @total_pages %>
+    <% if @page < @total_pages && @page + 1 < @total_pages %>
       <!-- Next Page -->
       <li>
         <%= link_to("#{@page + 1}", thing_page_path(@model_name, @page + 1)) %>

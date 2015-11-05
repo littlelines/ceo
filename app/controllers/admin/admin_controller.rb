@@ -166,7 +166,7 @@ class Admin::AdminController < ApplicationController
   # Returns the path of the thing.
   def thing_path(model, object)
     id = object['ID'] || object['id']
-    send(:"admin_#{model.to_s.underscore.downcase}_path", id: id)
+    send(:"admin_#{undersingularize(model)}_path", id: id)
   end
 
   # Private: Returns the index path of a model.
@@ -176,7 +176,7 @@ class Admin::AdminController < ApplicationController
   # Returns the path of many things.
   def things_path(object = nil)
     object ||= @route_name || controller_name
-    send(:"admin_#{object.to_s.pluralize.downcase}_path")
+    send(:"admin_#{underpluralize(object)}_path")
   end
 
   # Private
@@ -187,7 +187,7 @@ class Admin::AdminController < ApplicationController
   # Returns the edit path of a model.
   def edit_thing_path(model, object)
     id = object['ID'] || object['id']
-    send(:"edit_admin_#{model}_path", id: id)
+    send(:"edit_admin_#{undersingularize(model)}_path", id: id)
   end
 
   # Private
@@ -196,9 +196,8 @@ class Admin::AdminController < ApplicationController
   # object - An instance of a model.
   #
   # Returns the new path of a model.
-  def new_thing_path(model, object)
-    id = object['ID'] || object['id']
-    send(:"new_admin_#{model}_path", id: id)
+  def new_thing_path(model)
+    send(:"new_admin_#{undersingularize(model)}_path")
   end
 
   # Private
@@ -208,6 +207,24 @@ class Admin::AdminController < ApplicationController
   #
   # Returns the paginated path of an object.
   def thing_page_path(model, page)
-    send(:"page_admin_#{model.to_s.underscore.pluralize}_path", page: page)
+    send(:"page_admin_#{underpluralize(model)}_path", page: page)
+  end
+
+  # Private
+  #
+  # noun - Something to underpluralize. (String)
+  #
+  # Returns an underscored and pluralized string.
+  def underpluralize(noun)
+    noun.to_s.underscore.pluralize.downcase
+  end
+
+  # Private
+  #
+  # noun - Something to undersingularize. (String)
+  #
+  # Returns an underscored and singularized string.
+  def undersingularize(noun)
+    noun.to_s.underscore.singularize.downcase
   end
 end

@@ -37,6 +37,14 @@ module TestHelper
     admin_page(named_route)
     assert_equal 200, page.status_code
   end
+
+  def setup
+    Apple.delete_all
+  end
+
+  def teardown
+    Apple.delete_all
+  end
 end
 
 class ActiveSupport::TestCase
