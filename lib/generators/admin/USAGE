@@ -1,0 +1,11 @@
+Description:
+    Admin page controller generator.
+
+Example:
+    rails generate admin Things
+
+    This will create:
+        app/controllers/admin/things_controller.rb
+
+    AND route:
+        resources :things
