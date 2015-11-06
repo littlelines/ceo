@@ -25,7 +25,7 @@ require 'capybara/rails'
 
 Minitest::Reporters.use!(Minitest::Reporters::DefaultReporter.new(color: true))
 
-module TestHelper
+module AcceptanceHelper
   include Minitest::Spec::DSL
   include Capybara::DSL
 
@@ -48,5 +48,9 @@ module TestHelper
 end
 
 class ActiveSupport::TestCase
-  include TestHelper
+  extend Minitest::Spec::DSL
+end
+
+class ActionController::TestCase
+  extend Minitest::Spec::DSL
 end

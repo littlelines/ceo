@@ -1,7 +1,7 @@
 require 'test_helper'
 
 describe 'apples admin pages' do
-  include TestHelper
+  include AcceptanceHelper
   describe 'new' do
     before do
       admin_page '/apples/new'

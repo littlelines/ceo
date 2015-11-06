@@ -1,8 +1,6 @@
 require 'test_helper'
 
-describe CEO::Paginator do
-  include TestHelper
-
+class CEO::PaginatorTest < ActiveSupport::TestCase
   before do
     @apple_count = 10
     @per_page = 2

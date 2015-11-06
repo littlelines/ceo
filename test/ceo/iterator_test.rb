@@ -1,7 +1,7 @@
 require 'test_helper'
 
 describe CEO::Iterator do
-  include TestHelper
+  include AcceptanceHelper
 
   before do
     @filterable = [:id, :name]

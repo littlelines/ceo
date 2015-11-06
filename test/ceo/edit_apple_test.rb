@@ -1,7 +1,8 @@
 require 'test_helper'
 
 describe 'apples admin pages' do
-  include TestHelper
+  include AcceptanceHelper
+
   describe 'edit' do
     before do
       @apple = Apple.create(name: 'Granny Smith')

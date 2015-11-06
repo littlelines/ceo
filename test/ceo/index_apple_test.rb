@@ -1,7 +1,7 @@
 require 'test_helper'
 
 describe 'Apple admin pages' do
-  include TestHelper
+  include AcceptanceHelper
 
   describe 'index' do
     before do
