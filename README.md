@@ -8,3 +8,4 @@ CEO
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://littlelines.mit-license.org)
 [![Build Status](https://travis-ci.org/littlelines/ceo.svg?branch=master)](https://travis-ci.org/littlelines/ceo)
 [![Code Climate](https://codeclimate.com/github/littlelines/ceo/badges/gpa.svg)](https://codeclimate.com/github/littlelines/ceo)
+[![Inline docs](http://inch-ci.org/github/littlelines/ceo.svg?branch=master)](http://inch-ci.org/github/littlelines/ceo)
