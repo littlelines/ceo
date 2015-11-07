@@ -1,7 +1,4 @@
 # Public: A base controller for admin pages.
-#
-# Routing:
-#   Routing can be dple `resource` route.
 class Admin::AdminController < ApplicationController
   before_action :find_thing, only: [:show, :edit, :update, :destroy]
 
