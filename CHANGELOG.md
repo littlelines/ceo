@@ -1,9 +1,12 @@
 # Changelog
 
-* __v0.1.1__
+* __v0.1.3__
+    * Adds #show method view.
+    * Reorganizes tests and tests more in-depth.
+
+* __v0.1.2__
     * Adds generators for routes, controllers, and `_form` view.
     * Fixes pagination errors and adds tests for pagination.
-    * This release should be stable enough for real-world applications.
 
 * __v0.1.1__
     * Adds default views and removes need for simple_form.
