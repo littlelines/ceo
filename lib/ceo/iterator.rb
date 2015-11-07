@@ -1,12 +1,25 @@
-# Public: Iterator for listing out things.
 module CEO
+  # Public: Delegates pagination and filters attributes.
+  #
+  # Examples
+  #
+  #   iterator = CEO::Iterator.new(Apple, current_page: filters: { only: [:id, :name] })
+  #   iterator.total_pages
+  #   # => 7
+  #   iterator.current_page
+  #   # => 2
   class Iterator
-    attr_reader :current_page, :total_pages
+    # Public: Returns the current page.
+    attr_reader :current_page
 
-    # model   - The model to perform queries on.
-    # options -
+    # Public: Returns the total pages paginated.
+    attr_reader :total_pages
+
+    # model - The model to perform queries on.
+    # options - A hash of options for the iterator.
     #   query - An array of nested queries.
     #   filters - A hash of filters (only/except).
+    #   current_page - The current page to be paginated.
     def initialize(model, options = {})
       @model = model
       @options = options
@@ -100,6 +113,7 @@ module CEO
 
     # Public: Blacklists keys based on an array.
     #
+    # things - An array of keys to be filtered.
     # blacklist - An array of keys that are not allowed.
     #
     # Examples
@@ -117,6 +131,7 @@ module CEO
 
     # Public: Whitelists keys based on an array.
     #
+    # things - An array of keys to be filtered.
     # whitelist - An array of keys that are only allowed.
     #
     # Examples
