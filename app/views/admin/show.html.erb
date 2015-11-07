@@ -1,0 +1,16 @@
+<h1><%= @title %> #<%= @thing.id %></h1>
+
+<div>
+  <%= link_to 'Back', things_path(@model) %>
+</div>
+
+<table>
+  <tbody>
+    <% @thing_attrs.each do |thing| %>
+      <tr>
+        <th><%= thing.first %></th>
+        <td><%= thing.last %></th>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

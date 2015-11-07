@@ -1,7 +1,7 @@
 require 'test_helper'
 
 describe 'routes' do
-  include TestHelper
+  include AcceptanceHelper
 
   describe 'apples' do
     def setup

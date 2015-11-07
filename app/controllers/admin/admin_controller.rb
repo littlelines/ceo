@@ -1,7 +1,4 @@
 # Public: A base controller for admin pages.
-#
-# Routing:
-#   Routing can be dple `resource` route.
 class Admin::AdminController < ApplicationController
   before_action :find_thing, only: [:show, :edit, :update, :destroy]
 
@@ -44,7 +41,8 @@ class Admin::AdminController < ApplicationController
 
   # GET /:things/:id
   def show(options = {})
-    @thing_model = thing
+    @model = thing
+    @title = @model.to_s.titleize.pluralize
     if options[:query]
       query_out = {}
       iterator = CEO::Iterator.new(thing)
