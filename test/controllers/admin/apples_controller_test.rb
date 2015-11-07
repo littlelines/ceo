@@ -1,3 +1,5 @@
+require 'test_helper'
+
 class Admin::ApplesControllerTest < ActionController::TestCase
   def setup
     @controller = Admin::ApplesController.new
