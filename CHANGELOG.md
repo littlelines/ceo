@@ -1,5 +1,9 @@
 # Changelog
 
+* __v0.1.5__
+    * Fixes the problems revealed in v0.1.4 and extends
+      `AdminMiddleware` instead of `AdminHelper` inside of `AdminHelper`.
+
 * __v0.1.4__
     * Allows for `AdminHelper` to be included as a means of extending
       `AdminController`
