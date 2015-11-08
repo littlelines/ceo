@@ -1,5 +1,8 @@
 # Public: A base controller for admin pages.
 class Admin::AdminController < ApplicationController
+  # Includes helper methods given by a user.
+  include AdminMiddleware unless defined?(AdminMiddleware).nil?
+
   before_action :find_thing, only: [:show, :edit, :update, :destroy]
 
   helper_method :thing_path
@@ -225,7 +228,4 @@ class Admin::AdminController < ApplicationController
   def undersingularize(noun)
     noun.to_s.underscore.singularize.downcase
   end
-
-  # Includes helper methods given by a user.
-  include AdminMiddleware unless defined?(AdminMiddleware).nil?
 end
