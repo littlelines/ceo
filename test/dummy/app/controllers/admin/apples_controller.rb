@@ -1,4 +1,4 @@
-module AdminHelper
+module AdminMiddleware
   private
   def foo
     'bar'

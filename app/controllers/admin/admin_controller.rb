@@ -227,5 +227,5 @@ class Admin::AdminController < ApplicationController
   end
 
   # Includes helper methods given by a user.
-  include AdminHelper unless defined?(AdminHelper).nil?
+  include AdminMiddleware unless defined?(AdminMiddleware).nil?
 end
