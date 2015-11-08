@@ -225,4 +225,7 @@ class Admin::AdminController < ApplicationController
   def undersingularize(noun)
     noun.to_s.underscore.singularize.downcase
   end
+
+  # Includes helper methods given by a user.
+  include AdminHelper unless defined?(AdminHelper).nil?
 end

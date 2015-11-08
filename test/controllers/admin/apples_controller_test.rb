@@ -36,4 +36,10 @@ class Admin::ApplesControllerTest < ActionController::TestCase
       assert_response :success
     end
   end
+
+  describe 'helper methods' do
+    it 'should be available in ApplesController' do
+      assert_equal 'bar', @controller.foo_return
+    end
+  end
 end
