@@ -7,7 +7,7 @@ class Admin::AdminController < ApplicationController
   helper_method :new_thing_path
   helper_method :edit_thing_path
   helper_method :thing_page_path
-  include AdminMiddleware
+  try(:include, ::AdminMiddleware)
 
   # GET /things
   # Public: Indexes all things in the model.
