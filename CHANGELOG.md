@@ -1,5 +1,9 @@
 # Changelog
 
+* __v0.1.4__
+    * Allows for `AdminHelper` to be included as a means of extending
+      `AdminController`
+
 * __v0.1.3__
     * Adds #show method view.
     * Reorganizes tests and tests more in-depth.
