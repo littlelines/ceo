@@ -1,8 +1,5 @@
 # Public: A base controller for admin pages.
 class Admin::AdminController < ApplicationController
-  # Includes helper methods given by a user.
-  include AdminMiddleware unless defined?(AdminMiddleware).nil?
-
   before_action :find_thing, only: [:show, :edit, :update, :destroy]
 
   helper_method :thing_path
@@ -10,6 +7,7 @@ class Admin::AdminController < ApplicationController
   helper_method :new_thing_path
   helper_method :edit_thing_path
   helper_method :thing_page_path
+  include AdminMiddleware
 
   # GET /things
   # Public: Indexes all things in the model.
