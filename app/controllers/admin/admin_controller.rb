@@ -98,7 +98,7 @@ class Admin::AdminController < ApplicationController
       flash[:notice] = "#{thing} successfully created."
       redirect_to things_path(@route_name), notice: "#{thing.to_s.titleize} successfully created."
     else
-      render 'admin/new'
+      render 'admin/new', alert: "#{@controller_name.titleize} could not be updated. Please try again."
     end
   end
 
@@ -109,16 +109,19 @@ class Admin::AdminController < ApplicationController
     if @thing.update(thing_params)
       redirect_to things_path(@route_name), notice: "#{@controller_name.titleize} successfully updated."
     else
-      render 'admin/edit'
+      render 'admin/edit', alert: "#{@controller_name.titleize} could not be updated. Please try again."
     end
   end
 
   # DELETE /:things/:id
   def destroy
-    @thing.destroy
-
-    flash[:notice] = "#{thing} #{@thing.id} was successfully destroyed."
-    redirect_to action: :index
+    if @thing.destroy
+      flash[:notice] = "#{thing} #{@thing.id} was successfully destroyed."
+      redirect_to action: :index
+    else
+      flash[:alert] = "#{thing} #{@thing.id} could not be updated. Please try again."
+      redirect_to :back
+    end
   end
 
   private
