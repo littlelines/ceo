@@ -26,4 +26,25 @@ describe 'apples admin pages' do
       assert_equal apple_name, new_apple['name']
     end
   end
+
+  describe 'validation errors' do
+    before do
+      @banana = Banana.create(name: 'Dennis')
+      visit "/admin/bananas/#{@banana.id}/edit"
+    end
+
+    it 'should error when validation is nil' do
+      fill_in 'banana[name]', with: nil
+      click_button 'submit'
+
+      assert page.has_css?('.field_with_errors')
+    end
+
+    it 'should error when validation is empty' do
+      fill_in 'banana[name]', with: ''
+      click_button 'submit'
+
+      assert page.has_css?('.field_with_errors')
+    end
+  end
 end
