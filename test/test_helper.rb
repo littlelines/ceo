@@ -18,16 +18,16 @@ if ActiveSupport::TestCase.respond_to?(:fixture_path=)
   ActiveSupport::TestCase.fixtures :all
 end
 
-require 'minitest/autorun'
+require 'maxitest/autorun'
 require 'minitest/spec'
-require 'minitest/reporters'
 require 'capybara/rails'
-
-Minitest::Reporters.use!(Minitest::Reporters::DefaultReporter.new(color: true))
+require 'capybara/poltergeist'
 
 module AcceptanceHelper
-  include Minitest::Spec::DSL
+  extend Minitest::Spec::DSL
   include Capybara::DSL
+
+  Capybara.javascript_driver = :poltergeist
 
   def admin_page(named_route)
     visit("/admin#{named_route}")
