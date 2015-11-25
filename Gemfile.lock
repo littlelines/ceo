@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ceo (0.1.5)
+    ceo (0.1.6)
       rails (~> 4.2.4)
 
 GEM
@@ -94,7 +94,7 @@ GEM
       nenv (~> 0.1)
       shellany (~> 0.0)
     pg (0.18.4)
-    poltergeist (1.8.0)
+    poltergeist (1.8.1)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
       multi_json (~> 1.0)
@@ -136,7 +136,7 @@ GEM
       ffi (>= 0.5.0)
     shellany (0.0.1)
     slop (3.6.0)
-    sprockets (3.4.0)
+    sprockets (3.4.1)
       rack (> 1, < 3)
     sprockets-rails (2.3.3)
       actionpack (>= 3.0)

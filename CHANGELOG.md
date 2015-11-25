@@ -1,5 +1,12 @@
 # Changelog
 
+* __v0.1.6__
+    * Allows passing a block to `admin_for` which delegates the block
+      to the new resource routes. It's like passing a block to
+      `resources`, but with all the benefits of `admin_for`
+      (pagination and the `admin` namespace).
+    * Updates dependencies
+
 * __v0.1.5__
     * Fixes the problems revealed in v0.1.4 and extends
       `AdminMiddleware` instead of `AdminHelper` inside of `AdminHelper`.
