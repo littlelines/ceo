@@ -1,5 +1,7 @@
 # Changelog
 
+* __v0.1.7__
+    * Allows passing options to `admin_for`, just like with `resources`.
 * __v0.1.6__
     * Allows passing a block to `admin_for` which delegates the block
       to the new resource routes. It's like passing a block to
