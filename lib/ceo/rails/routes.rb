@@ -7,6 +7,7 @@ module ActionDispatch::Routing
     #
     # Returns a route.
     def admin_for(*rsrcs, &block)
+      options = rsrcs.extract_options!
       rsrcs.map!(&:to_sym)
 
       concern :pageable do
@@ -15,9 +16,11 @@ module ActionDispatch::Routing
         end
       end
 
+      options[:concerns] = :pageable
+
       namespace :admin do
         rsrcs.each do |r|
-          resources(r, concerns: :pageable, &block)
+          resources(r, options, &block)
         end
       end
     end

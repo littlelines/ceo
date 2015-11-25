@@ -27,5 +27,9 @@ describe 'routes' do
     it 'should allow passing a block to resources' do
       admin_exists_for? "/apples/#{@apple.id}/other_route"
     end
+
+    it 'should allow passing of options' do
+      admin_exists_for? "/not_obvious/responds_with_200"
+    end
   end
 end

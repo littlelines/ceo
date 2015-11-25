@@ -4,4 +4,10 @@ Rails.application.routes.draw do
   end
 
   admin_for :bananas
+
+  admin_for :not_obvious, controller: :other do
+    collection do
+      get 'responds_with_200'
+    end
+  end
 end
