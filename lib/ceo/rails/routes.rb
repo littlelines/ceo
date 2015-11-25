@@ -6,7 +6,7 @@ module ActionDispatch::Routing
     # Public: Generates default admin CRUD routes for resources.
     #
     # Returns a route.
-    def admin_for(*rsrcs)
+    def admin_for(*rsrcs, &block)
       rsrcs.map!(&:to_sym)
 
       concern :pageable do
@@ -17,7 +17,7 @@ module ActionDispatch::Routing
 
       namespace :admin do
         rsrcs.each do |r|
-          resources r, concerns: :pageable
+          resources(r, concerns: :pageable, &block)
         end
       end
     end

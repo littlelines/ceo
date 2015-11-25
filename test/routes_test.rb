@@ -23,5 +23,9 @@ describe 'routes' do
     it 'edit' do
       admin_exists_for? "/apples/#{@apple.id}/edit"
     end
+
+    it 'should allow passing a block to resources' do
+      admin_exists_for? "/apples/#{@apple.id}/other_route"
+    end
   end
 end
