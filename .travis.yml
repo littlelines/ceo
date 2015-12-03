@@ -10,6 +10,12 @@ addons:
 services:
   - postgresql
 
+gemfile:
+  - gemfiles/Gemfile.rails-4.2-stable
+  - gemfiles/Gemfile.rails-4.1-stable
+  - gemfiles/Gemfile.rails-4.0-stable
+  - Gemfile
+
 before_script:
   - psql -c 'create database dummy_test;' -U postgres
   - bin/setup
