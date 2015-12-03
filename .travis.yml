@@ -11,6 +11,7 @@ services:
   - postgresql
 
 env:
+  - "default"
   - "RAILS_VERSION=4.0"
   - "RAILS_VERSION=4.1"
   - "RAILS_VERSION=4.2"
