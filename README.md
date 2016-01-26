@@ -9,3 +9,12 @@ CEO
 [![Build Status](https://travis-ci.org/littlelines/ceo.svg?branch=master)](https://travis-ci.org/littlelines/ceo)
 [![Code Climate](https://codeclimate.com/github/littlelines/ceo/badges/gpa.svg)](https://codeclimate.com/github/littlelines/ceo)
 [![Inline docs](http://inch-ci.org/github/littlelines/ceo.svg?branch=master)](http://inch-ci.org/github/littlelines/ceo)
+
+## Getting Started
+
+Let's say I have some users that I need to manage.
+
+```
+$ rails new my_app
+$ rails g model User first_name:string last_name:string email:string
+```
