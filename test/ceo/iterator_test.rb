@@ -49,6 +49,8 @@ describe CEO::Iterator do
       )
 
       stage = @iterator.all.first['Stage']
+
+      assert_equal 'ripe', @banana.stage
       assert_equal @banana.stage, stage
     end
   end
