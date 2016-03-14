@@ -1,8 +1,17 @@
-<h1>New <%= @model.to_s.titleize %></h1>
+<h1>Editing <%= @thing.class.to_s.titleize %></h1>
 
 <%= link_to 'Back', things_path(@model) %>
 
 <%= form_for([:admin, @thing]) do |form| %>
+  <% if form.object.errors.any? %>
+    <ul class="errors">
+      <% form.object.errors.full_messages.each do |msg| %>
+        <li class="error"><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
   <%= render 'form', f: form %>
   <%= form.button :submit %>
 <% end %>
+
