@@ -12,6 +12,10 @@ describe CEO::Iterator do
       name: 'Granny Smith',
       fruit_id: @fruit.id
     )
+    @banana = Banana.create(
+      name: 'Ripe Banana',
+      stage: 1
+    )
   end
 
   describe '#all' do
@@ -35,6 +39,17 @@ describe CEO::Iterator do
     it 'should return 20 records by default' do
       24.times { Apple.create }
       assert_equal 20, CEO::Iterator.new(Apple).all.count
+    end
+
+    it 'should return an enum attribute as a string' do
+      @iterator = CEO::Iterator.new(
+        Banana,
+        per_page: 10,
+        query: %w(stage)
+      )
+
+      stage = @iterator.all.first['Stage']
+      assert_equal @banana.stage, stage
     end
   end
 

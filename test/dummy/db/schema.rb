@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20151112204745) do
 
   create_table "bananas", force: :cascade do |t|
     t.string   "name"
+    t.integer  "stage"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
