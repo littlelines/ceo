@@ -14,23 +14,26 @@
             <%= heading %>
           </th>
         <% end %>
+
+        <td></td>
+        <td></td>
       <% end %>
     </tr>
   </thead>
 
   <tbody>
     <% @things.each do |thing| %>
-      <tr id="#{@controller_name}-#{thing.id}">
-      <% thing.each do |heading, value| %>
-        <td label="<%= heading %>: ">
-          <%= value %>
-        </td>
+      <tr id="<%= @controller_name %>-<%= thing['id'] %>">
+        <% thing.each do |heading, value| %>
+          <td label="<%= heading %>: ">
+            <%= value %>
+          </td>
+        <% end %>
 
         <div class="actions">
-          <td><%= link_to("Edit", edit_thing_path(@model_name, thing)) %></td>
-          <td><%= link_to("Show", thing_path(@model_name, thing)) %></td>
+          <td><%= link_to "Edit", edit_thing_path(@model_name, thing) %></td>
+          <td><%= link_to "Show", thing_path(@model_name, thing) %></td>
         </div>
-      <% end %>
       </tr>
     <% end %>
   </tbody>
