@@ -65,7 +65,6 @@ module CEO
         # TODO: Make all of this into a method.
         # map first-level values to a hash
         keys.each do |key|
-          # attr_object[self.class.acronymize(key)] = thing[key.to_s]
           attr_object[self.class.acronymize(key)] = thing.send(key.to_sym)
         end
 
