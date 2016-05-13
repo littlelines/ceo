@@ -1,6 +1,6 @@
-<h1>Editing <%= @model.to_s.titleize %></h1>
-
-<%= link_to 'Back', things_path(@model) %>
+<div class='title-bar'>
+  <h1 class='title-bar__text'><%= "New #{@thing_model}" %></h1>
+</div>
 
 <%= form_for([:admin, @thing]) do |form| %>
   <%= render 'form', f: form %>
