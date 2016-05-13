@@ -23,7 +23,7 @@ class Admin::AdminController < ApplicationController
     @iterator = CEO::Iterator.new(
       thing,
       query: options[:query],
-      page: @page,
+      current_page: @page,
       per_page: options.fetch(:per_page, 20),
       filters: {
         only: options[:only],
