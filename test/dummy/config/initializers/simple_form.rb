@@ -1,5 +1,3 @@
-require 'simple_form'
-
 # Use this setup block to configure all options available in SimpleForm.
 SimpleForm.setup do |config|
   # Wrappers are used by the form builder to generate a
@@ -7,8 +5,7 @@ SimpleForm.setup do |config|
   # wrapper, change the order or even add your own to the
   # stack. The options given below are used to wrap the
   # whole input.
-
-  config.wrappers :default, class: :input,
+  config.wrappers :default, class: :differentClass,
     hint_class: :field_with_hint, error_class: :field_with_errors do |b|
     ## Extensions enabled by default
     # Any of these extensions can be disabled for a
@@ -54,53 +51,6 @@ SimpleForm.setup do |config|
     # b.use :full_error, wrap_with: { tag: :span, class: :error }
   end
 
-  config.wrappers :ceo, class: 'list__item list__item--form',
-    hint_class: :field_with_hint, error_class: :field_with_errors do |b|
-    ## Extensions enabled by default
-    # Any of these extensions can be disabled for a
-    # given input by passing: `f.input EXTENSION_NAME => false`.
-    # You can make any of these extensions optional by
-    # renaming `b.use` to `b.optional`.
-
-    # Determines whether to use HTML5 (:email, :url, ...)
-    # and required attributes
-    b.use :html5
-
-    # Calculates placeholders automatically from I18n
-    # You can also pass a string as f.input placeholder: "Placeholder"
-    b.use :placeholder
-
-    ## Optional extensions
-    # They are disabled unless you pass `f.input EXTENSION_NAME => true`
-    # to the input. If so, they will retrieve the values from the model
-    # if any exists. If you want to enable any of those
-    # extensions by default, you can change `b.optional` to `b.use`.
-
-    # Calculates maxlength from length validations for string inputs
-    b.optional :maxlength
-
-    # Calculates pattern from format validations for string inputs
-    b.optional :pattern
-
-    # Calculates min and max from length validations for numeric inputs
-    b.optional :min_max
-
-    # Calculates readonly automatically from readonly attributes
-    b.optional :readonly
-
-    ## Inputs
-    b.use :label, class: 'label'
-    b.use :input, class: 'input'
-    b.use :hint,  wrap_with: { tag: :span, class: :hint }
-    b.use :error, wrap_with: { tag: :span, class: :error }
-
-    ## full_messages_for
-    # If you want to display the full error message for the attribute, you can
-    # use the component :full_error, like:
-    #
-    # b.use :full_error, wrap_with: { tag: :span, class: :error }
-  end
-
   # The default wrapper to be used by the FormBuilder.
   config.default_wrapper = :default
 
@@ -108,10 +58,10 @@ SimpleForm.setup do |config|
   # Defaults to :nested for bootstrap config.
   #   inline: input + label
   #   nested: label > input
-  config.boolean_style = :inline
+  config.boolean_style = :nested
 
   # Default class for buttons
-  config.button_class = 'button'
+  config.button_class = 'btn'
 
   # Method used to tidy up errors. Specify any Rails Array method.
   # :first lists the first message for each field.
@@ -140,25 +90,24 @@ SimpleForm.setup do |config|
   # config.collection_wrapper_class = nil
 
   # You can wrap each item in a collection of radio/check boxes with a tag,
-  # defaulting to :span. Please note that when using :boolean_style = :nested,
-  # SimpleForm will force this option to be a label.
+  # defaulting to :span.
   # config.item_wrapper_tag = :span
 
   # You can define a class to use in all item wrappers. Defaulting to none.
   # config.item_wrapper_class = nil
 
   # How the label text should be generated altogether with the required text.
-  config.label_text = lambda { |label, required, explicit_label| "#{required} #{label}" }
+  # config.label_text = lambda { |label, required, explicit_label| "#{required} #{label}" }
 
   # You can define the class to use on all labels. Default is nil.
-  # config.label_class = 'label'
+  # config.label_class = nil
 
   # You can define the default class to be used on forms. Can be overriden
   # with `html: { :class }`. Defaulting to none.
   # config.default_form_class = nil
 
   # You can define which elements should obtain additional classes
-  config.generate_additional_classes_for = [:input]
+  # config.generate_additional_classes_for = [:wrapper, :label, :input]
 
   # Whether attributes are required by default (or not). Default is true.
   # config.required_by_default = true
@@ -213,11 +162,4 @@ SimpleForm.setup do |config|
 
   # Defines which i18n scope will be used in Simple Form.
   # config.i18n_scope = 'simple_form'
-
-  config.wrappers :hidden, :tag => 'div', :class => '', :error_class => '' do |b|
-    b.use :html5
-    b.use :label_input, :wrap_with => nil
-  end
-
-  config.wrapper_mappings = { :hidden => :hidden }
 end
