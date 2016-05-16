@@ -1,0 +1,112 @@
+////////////////////
+// Primary Nav 
+////////////////////
+
+.nav
+  $nav: &
+
+  // .nav--primary
+  &--primary
+    float: left
+    overflow: visible
+    width: inherit
+
+    &__collapse
+      clear: both
+      max-height: 0
+      overflow: hidden
+      transition: max-height 0.5s $transition-easing
+      @media #{$large-up} 
+        clear: none
+        max-height: none
+        overflow: none
+      &--active
+        overflow: none
+        max-height: 50em
+        
+
+    // .nav--primary__right
+    &__right
+      float: right 
+
+    // .nav--primary__item
+    &__item
+      display: inline-block
+      float: left
+      overflow: hidden
+      @media #{$large-up}
+        &:hover, &:focus, &:active
+          overflow: visible
+        &:last-child
+          #{$nav}--dropdown
+            right: 0
+            left: auto
+
+      &--toggle
+        display: block
+        @media #{$large-up}
+          display: none
+
+      // .nav--primary__item--left
+      &--left
+        display: inline-block 
+        float: left
+        text-align: center
+        width: 50%
+        @media #{$large-up}
+          width: auto
+          transition: none 
+
+    // .nav--primary__link
+    &__link
+      padding: ($rhythm-vertical * 1.5) $rhythm-horizontal
+      vertical-align: middle
+      @media #{$large-up}
+        padding: ($rhythm-vertical * 1.5) $rhythm-horizontal
+
+      &--current
+        color: $color-accent
+        &:hover, &:active, &:focus
+          color: lighten($color-accent, 10%)
+          
+      
+      // .nav--primary__link--logo
+      &--logo
+        padding: $rhythm
+        &:hover
+          background: none
+          color: $color-accent
+
+      &--user
+        float: right
+        padding: $rhythm 
+        @media #{$large-up}
+          float: none
+        
+      &--toggle
+        font-size: 1.25em
+        padding: $rhythm
+
+  &--dropdown
+    background: $header-primary-background
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1)
+    display: inline-block
+    float: left
+    @media #{$large-up}
+      display: block
+      float: none
+      left: 0
+      max-height: none
+      min-width: 100%
+      position: absolute
+      text-align: left
+      top: 100%
+      width: auto
+      white-space: nowrap
+
+    &__item
+      @media #{$large-up}
+        border-top: 1px solid $header-primary-background
+
+    &__link
+      padding: $rhythm

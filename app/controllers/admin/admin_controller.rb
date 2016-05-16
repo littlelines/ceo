@@ -9,6 +9,8 @@ class Admin::AdminController < ApplicationController
   helper_method :thing_page_path
   try(:include, ::AdminMiddleware)
 
+  layout "admin"
+
   # GET /things
   # Public: Indexes all things in the model.
   #

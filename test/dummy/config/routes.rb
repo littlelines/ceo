@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'home#index'
+
   admin_for :apples do
     get 'other_route'
   end

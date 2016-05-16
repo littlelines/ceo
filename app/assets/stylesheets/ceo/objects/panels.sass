@@ -1,0 +1,42 @@
+////////////////////
+// Panel Objects
+////////////////////
+
++panel-generator
+
+.panel
+
+  // .panel--order-part
+  &--order-part
+    display: block
+    margin-bottom: .5em
+    width: 100%
+    @media #{$large-up}
+      float: left
+      width: 49%
+      &:nth-child(odd)
+        margin-right: 1%
+      .input, .select, .textarea
+        width: 68%
+
+  // .panel--dashboard
+  &--dashboard
+    float: left
+    padding: $rhythm-vertical 0
+    width: 100%
+
+    // .panel--dashboard__section
+    &__section
+      display: block
+      float: left
+      padding: ($rhythm-vertical * 1.5) ($rhythm-horizontal * 2)
+      width: 50%
+      @media #{$large-up}
+        width: 25%
+
+      @each $name, $color in $all-function-colors
+        &--#{$name}
+          @if lightness($color) > 90%
+            $color: darken($color, 5%)
+          background-color: $color
+          color: dynamic-text-lightness($color, 20)
