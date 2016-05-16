@@ -1,3 +1,7 @@
 <div class='title-bar'>
   <h1 class='title-bar__text'>Fruits & Stuff</h1>
 </div>
+
+<%= simple_form_for [:admin, Apple.new] do |f| %>
+  <%= f.input :name %>
+<% end %>
