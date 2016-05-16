@@ -111,6 +111,7 @@ class Admin::AdminController < ApplicationController
     if @thing.update(thing_params)
       redirect_to things_path(@route_name), notice: "#{@controller_name.titleize} successfully updated."
     else
+      @model = @thing.model_name.name.constantize
       render 'admin/edit'
     end
   end
