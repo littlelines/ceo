@@ -26,10 +26,14 @@
         </li>
         <div class="nav--primary__collapse">
           <li class="nav__item nav--primary__item nav--primary__item--left">
-            <%= link_to "Home", '#', class: "nav__link nav--primary__link" %>
+            <%= link_to "Dashboard", admin_dashboard_path, class: "nav__link nav--primary__link" %>
+          </li>
+          <li class="nav__item nav--primary__item nav--primary__item--left">
+            <%= link_to "Styleguide", admin_styleguide_path, class: 'nav__link nav--primary__link' %>
           </li>
         </div>
       </ul>
     </nav>
   </div>
 </header>
+

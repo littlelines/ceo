@@ -11,6 +11,14 @@ class Admin::AdminController < ApplicationController
 
   layout "admin"
 
+  def dashboard
+    render 'admin/dashboard'
+  end
+
+  def styleguide
+    render 'admin/styleguide'
+  end
+
   # GET /things
   # Public: Indexes all things in the model.
   #
