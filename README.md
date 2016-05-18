@@ -10,11 +10,23 @@ CEO
 [![Code Climate](https://codeclimate.com/github/littlelines/ceo/badges/gpa.svg)](https://codeclimate.com/github/littlelines/ceo)
 [![Inline docs](http://inch-ci.org/github/littlelines/ceo.svg?branch=master)](http://inch-ci.org/github/littlelines/ceo)
 
+## Foreword
+
+CEO was created out of frustration with
+[ActiveAdmin](http://activeadmin.info/). At Littlelines, we wanted an
+admin framework that is simple and flexible, but gets out of your way
+when you need it to. CEO's job is to give you the ability to quickly
+build customizable admin pages that you don't have to keep looking up
+the documentation for.
+
 ## Getting Started
 
-Let's say I have some users that I need to manage.
+Everything in your Rails application with a model can become the base
+of an admin page. Let's use `Users` as an example.
 
 ```
 $ rails new my_app
 $ rails g model User first_name:string last_name:string email:string
 ```
+
+The easiest way to generate an admin page is to use the generator.
