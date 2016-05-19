@@ -1,5 +1,0 @@
-@function dynamic-text-lightness($color, $lightness: 70)
-  @if (lightness($color) > $lightness) 
-    @return $font-color // Lighter backgorund, return dark color
-  @else 
-    @return $font-color-inverted // Darker background, return light color
