@@ -13,7 +13,7 @@ describe 'apples admin pages' do
 
     it 'should create a new Apple' do
       fill_in 'apple[name]', with: 'Granny Smith'
-      click_button 'Create Apple'
+      click_button 'submit'
       assert_equal 200, page.status_code
     end
   end

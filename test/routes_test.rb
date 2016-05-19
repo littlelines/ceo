@@ -3,14 +3,6 @@ require 'test_helper'
 describe 'routes' do
   include AcceptanceHelper
 
-  it 'gets dashboard' do
-    admin_exists_for? '/dashboard'
-  end
-
-  it 'gets styleguide' do
-    admin_exists_for? '/styleguide'
-  end
-
   describe 'apples' do
     def setup
       @apple = Apple.create(name: 'Granny Smith')

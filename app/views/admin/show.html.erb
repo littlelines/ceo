@@ -1,20 +1,16 @@
-<div class='title-bar'>
-  <h1 class='title-bar__text'><%= "Details for #{@title.singularize} #{@thing.id}" %></h1>
+<h1><%= @title %> #<%= @thing.id %></h1>
 
-  <%= link_to "Back", things_path(@model), class: 'title-bar__action' %>
-  <%= link_to "Edit", send(:"edit_admin_#{@title.downcase.singularize.parameterize.underscore}_path", @thing.id), class: 'title-bar__action' %>
-  <%= link_to "Delete", send(:"admin_#{@title.downcase.singularize.parameterize.underscore}_path", @thing.id), method: :delete, data: { confirm: "Are you sure you want to delete #{@thing.class} ##{@thing.id}?" }, class: 'title-bar__action' %>
+<div>
+  <%= link_to 'Back', things_path(@model) %>
+</div>
 
-</div><!-- .title-bar -->
-
-<table class='table'>
+<table>
   <tbody>
     <% @thing_attrs.each do |thing| %>
       <tr>
         <th><%= thing.first %></th>
-        <td><%= thing.last %></td>
+        <td><%= thing.last %></th>
       </tr>
     <% end %>
   </tbody>
 </table>
-

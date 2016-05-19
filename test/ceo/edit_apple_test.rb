@@ -18,7 +18,7 @@ describe 'apples admin pages' do
 
       apple_name = 'Red Delicious'
       fill_in 'apple[name]', with: apple_name
-      click_button 'Update Apple'
+      click_button 'submit'
       assert_equal 200, page.status_code
 
       new_apple = Apple.find(@apple.id).attributes
@@ -35,14 +35,14 @@ describe 'apples admin pages' do
 
     it 'should error when validation is nil' do
       fill_in 'banana[name]', with: nil
-      click_button 'Update Banana'
+      click_button 'submit'
 
       assert page.has_css?('.field_with_errors')
     end
 
     it 'should error when validation is empty' do
       fill_in 'banana[name]', with: ''
-      click_button 'Update Banana'
+      click_button 'submit'
 
       assert page.has_css?('.field_with_errors')
     end
