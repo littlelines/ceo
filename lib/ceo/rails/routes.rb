@@ -19,6 +19,8 @@ module ActionDispatch::Routing
       options[:concerns] = :pageable
 
       namespace :admin do
+        get 'dashboard', to: 'admin#dashboard'
+        get 'styleguide', to: 'admin#styleguide'
         rsrcs.each do |r|
           resources(r, options, &block)
         end

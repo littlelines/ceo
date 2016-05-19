@@ -1,0 +1,13 @@
+=panel-generator
+  .panel
+    display: block
+    padding: $rhythm
+    text-align: center
+    &--text-left
+      text-align: left
+    @each $name, $color in $all-function-colors
+      &--#{$name}
+        @if lightness($color) > 90%
+          $color: darken($color, 5%)
+        background-color: $color
+        color: dynamic-text-lightness($color) 

@@ -1,0 +1,17 @@
+=space-generator($size, $name: "")
+  $n: #{$name}
+  @if $name != ""
+    $n: "#{$name}"
+  $sides: (top, left, bottom, right)
+
+  .space--#{$n}
+    margin: $size
+  @each $side in $sides 
+    .space-#{$side}--#{$n}
+      margin-#{$side}: $size
+
+  .space-inner--#{$n}
+    padding: $size
+  @each $side in $sides 
+    .space-inner--#{$side}--#{$n}
+      padding-#{$side}: $size

@@ -1,0 +1,39 @@
+<header class="header--primary">
+  <div class="wrapper">
+    <nav class="header--primary__nav">
+      <ul class="nav nav--primary">
+        <div class="nav--primary__right">
+          <li class="nav__item nav--primary__item">
+            <%= link_to '#', class: 'nav__link nav--primary__link nav--primary__link--user' do %>
+              <div class="user">
+                <div class="user__name">
+                  Admin
+                </div>
+              </div>
+            <% end %>
+            <ul class="nav--dropdown">
+              <li class="nav__item nav--primary__item">
+                <%= link_to "Logout", '#', method: :delete, class: 'nav__link nav--primary__link' %>
+              </li>
+            </ul>
+          </li>
+        </div>
+        <li class="nav__item nav--primary__item nav--primary__item--toggle">
+          <a class="nav__link nav--primary__link nav--primary__link--toggle" toggle-menu="nav--primary__collapse" toggle-modifier="--active">
+            <!-- %= inline_svg("hamburger.svg") % -->
+            HAM
+          </a>
+        </li>
+        <div class="nav--primary__collapse">
+          <li class="nav__item nav--primary__item nav--primary__item--left">
+            <%= link_to "Dashboard", admin_dashboard_path, class: "nav__link nav--primary__link" %>
+          </li>
+          <li class="nav__item nav--primary__item nav--primary__item--left">
+            <%= link_to "Styleguide", admin_styleguide_path, class: 'nav__link nav--primary__link' %>
+          </li>
+        </div>
+      </ul>
+    </nav>
+  </div>
+</header>
+

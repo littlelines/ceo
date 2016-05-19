@@ -1,78 +1,83 @@
-<h1><%= @title %></h1>
+<div class='title-bar'>
+  <h1 class='title-bar__text'><%= @title %></h1>
+  <%= link_to "New #{@model_name.titleize}", send(:"new_admin_#{@model_name}_path"), class: "title-bar__action title-bar__action--add" %>
+</div><!-- .title-bar -->
 
-<div>
-  <p><%= link_to "New #{@title.singularize}", new_thing_path(@model_name), id: "new-#{@model_name}" %></p>
-  <p><%= "There are no #{@human_model.downcase.pluralize} in the database." if @things.blank? %></p>
-</div>
-
-<table>
-  <thead>
-    <tr>
-      <% unless @things.blank? %>
+<table class='table table--responsive'>
+  <thead class='table--responsive__head'>
+    <tr class='table--responsive__row'>
+      <% if @things.blank? %>
+        <%= "There are no #{@model_name.pluralize} in the database." %>
+      <% else %>
         <% @things.first.each_key do |heading| %>
-          <th>
-            <%= heading %>
-          </th>
+          <th class='table--responsive__cell' scope='col'><%= heading %></th>
         <% end %>
+        <th class='table--responsive__function-cell' scope='col'></th>
+        <th class='table--responsive__function-cell' scope='col'></th>
       <% end %>
     </tr>
   </thead>
 
-  <tbody>
+  <tbody class='table--responsive__body'>
     <% @things.each do |thing| %>
-      <tr id="#{@controller_name}-#{thing.id}">
-      <% thing.each do |heading, value| %>
-        <td label="<%= heading %>: ">
-          <%= value %>
+      <tr class='table--responsive__row'>
+        <% thing.each do |heading, value| %>
+          <td class='table--responsive__cell' label=<%= "#{heading}: " %>><%= value %></td>
+        <% end %>
+
+        <td class='table--responsive__function-cell'>
+          <%= link_to send(:"edit_admin_#{@model_name}_path", thing['ID']), class: 'table__link' do %>
+            pencil
+            <!-- < %= inline_svg "pencil.svg" %> -->
+          <% end %>
         </td>
 
-        <div class="actions">
-          <td><%= link_to("Edit", edit_thing_path(@model_name, thing)) %></td>
-          <td><%= link_to("Show", thing_path(@model_name, thing)) %></td>
-        </div>
-      <% end %>
+        <td class='table--responsive__function-cell'>
+          <%= link_to send(:"admin_#{@model_name}_path", thing['ID']), class: 'table__link' do %>
+            eye
+            <!-- < %= inline_svg "eye.svg" %> -->
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<nav class="navigation" role="navigation">
-  <ul>
-    <% if @page == 1 %>
-      <li><a>1</a></li>
-    <% else %>
-      <!-- First Page -->
-      <li>
-        <%= link_to('1', thing_page_path(@model_name, @page - 1)) %>
-      </li>
-    <% end %>
-
-    <% if @page.to_i > 2 %>
-      <!-- Previous Page -->
-      <li>
-        <%= link_to("#{@page - 1}", thing_page_path(@model_name, @page - 1)) %>
-      </li>
-    <% end %>
-
+<% if @total_pages.to_i > 1 %>
+  <ul class='nav nav--pagination' role='navigation'>
+    <!-- First Page -->
     <% unless @page == 1 %>
-      <!-- Current Page -->
-      <li>
-        <a><%= @page %></a>
+      <li class='nav__item nav__item--horizontal'>
+        <%= link_to "&#171;".html_safe, thing_page_path(@model_name, 1), class: 'nav__link nav__link--pagination' %>
       </li>
     <% end %>
 
-    <% if @page < @total_pages && @page + 1 < @total_pages %>
-      <!-- Next Page -->
-      <li>
-        <%= link_to("#{@page + 1}", thing_page_path(@model_name, @page + 1)) %>
+    <!-- Previous Page -->
+    <% if @page > 1 %>
+      <li class='nav__item nav__item--horizontal'>
+        <%= link_to "&#139;".html_safe, thing_page_path(@model_name, @page - 1), class: 'nav__link nav__link--pagination' %>
       </li>
     <% end %>
 
+    <!-- Current Page -->
+    <% unless @total_pages == 1 %>
+      <li class='nav__item nav__item--horizontal'>
+        <a class='nav__link nav__link--pagination nav__link--current'><%= @page %></a>
+      </li>
+    <% end %>
+
+    <!-- Next Page -->
+    <% if @page < @total_pages %>
+      <li class='nav__item nav__item--horizontal'>
+        <%= link_to "&#155;".html_safe, thing_page_path(@model_name, @page + 1), class: 'nav__link nav__link--pagination' %>
+      </li>
+    <% end %>
+
+    <!-- Last Page -->
     <% unless @page == @total_pages %>
-      <!-- Last Page -->
-      <li>
-        <%= link_to("#{@total_pages}", thing_page_path(@model_name, @total_pages)) %>
+      <li class='nav__item nav__item--horizontal'>
+        <%= link_to "&#187;".html_safe, thing_page_path(@model_name, @total_pages), class: 'nav__link nav__link--pagination' %>
       </li>
     <% end %>
   </ul>
-</nav>
+<% end %>
