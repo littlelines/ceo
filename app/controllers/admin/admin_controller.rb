@@ -9,6 +9,16 @@ class Admin::AdminController < ApplicationController
   helper_method :thing_page_path
   try(:include, ::AdminMiddleware)
 
+  layout "admin"
+
+  def dashboard
+    render 'admin/dashboard'
+  end
+
+  def styleguide
+    render 'admin/styleguide'
+  end
+
   # GET /things
   # Public: Indexes all things in the model.
   #
@@ -23,7 +33,7 @@ class Admin::AdminController < ApplicationController
     @iterator = CEO::Iterator.new(
       thing,
       query: options[:query],
-      page: @page,
+      current_page: @page,
       per_page: options.fetch(:per_page, 20),
       filters: {
         only: options[:only],
@@ -109,6 +119,7 @@ class Admin::AdminController < ApplicationController
     if @thing.update(thing_params)
       redirect_to things_path(@route_name), notice: "#{@controller_name.titleize} successfully updated."
     else
+      @model = @thing.model_name.name.constantize
       render 'admin/edit'
     end
   end

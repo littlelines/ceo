@@ -1,0 +1,34 @@
+////////////////////
+// Primary Colors
+////////////////////
+
+$black: rgb(50, 50, 50) !default
+$grey: rgb(239, 239, 239) !default
+$slate: rgb(108, 108, 108) !default
+$white: rgb(249, 249, 249) !default
+$blue: rgb(95, 175, 255) !default
+$purple: rgb(175, 95, 215) !default
+$red: rgb(215, 95, 95) !default
+$yellow: rgb(247, 197, 42) !default
+$orange: rgb(255, 135, 0) !default
+$green: rgb(120, 210, 48) !default
+
+// This allows all of the primary colors to be accessed by mixins that generate display classes for objects with one of each color
+$all-colors: (black, $black) (grey, $grey) (slate, $slate) (white, $white) (blue, $blue) (purple, $purple) (red, $red) (yellow, $yellow) (orange, $orange) (green, $green)
+
+////////////////////
+// Function Colors
+////////////////////
+
+$color-primary: $black !default
+$color-inverted: $white !default
+$color-secondary: $grey !default
+$color-accent: $blue !default
+$color-function: $slate !default
+$color-success: $green !default
+$color-alert: $red !default
+$color-warning: $yellow !default
+$color-secure: $orange !default
+
+// This allows all of the function colors to be accessed by mixins that generate display classes for objects with one of each color
+$all-function-colors: (primary, $color-primary) (secondary, $color-secondary) (accent, $color-accent) (function, $color-function) (alert, $color-alert) (success, $color-success) (warning, $color-warning) (secure, $color-secure)

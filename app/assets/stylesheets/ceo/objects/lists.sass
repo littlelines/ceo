@@ -1,0 +1,26 @@
+////////////////////
+// List Objects 
+////////////////////
+
+.list
+  margin: 0
+
+  // .list--unstyled
+  &--unstyled
+    list-style-type: none
+    margin: 0
+
+  // .list__item
+  &__item
+    display: block
+    padding: $rhythm
+
+    // .list__item--horizontal
+    &--horizontal
+      display: inline-block
+
+    &--form
+      display: inline-block
+      padding: ($input-padding * 3) $rhythm-horizontal
+      width: 100%
+      +clearfix
