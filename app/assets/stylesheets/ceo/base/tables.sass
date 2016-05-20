@@ -1,0 +1,32 @@
+////////////////////
+// Tables
+////////////////////
+
+table
+  border:
+    collapse: $table-border-collapse
+    color: $table-border-color
+    width: $table-border-width
+  cell-spacing: 0
+  table-layout: fixed
+  width: $table-width
+  a
+    text-decoration: underline
+
+////////////////////
+// Table Elements
+////////////////////
+
+thead tr, tfoot tr
+  background: $table-header
+  color: dynamic-text-lightness($table-header)
+
+tr
+  background: $table-row-odd
+  text-align: left
+  &:nth-child(even)
+    background: $table-row-even
+
+td, th
+  padding: $rhythm
+  vertical-align: middle

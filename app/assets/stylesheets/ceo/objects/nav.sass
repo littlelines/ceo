@@ -1,0 +1,38 @@
+////////////////////
+// Nav Objects 
+////////////////////
+
+.nav
+  display: inline-block
+  list-style-type: none
+  margin: 0
+
+  // .nav__item
+  &__item
+    display: block
+    position: relative
+
+    // .nav__item--horizontal
+    &--horizontal
+      display: inline-block
+      float: left
+
+  // .nav__link
+  &__link
+    color: inherit
+    display: inherit
+    padding: $rhythm
+    transition: color $transition-duration $transition-easing
+    &:hover, &:active, &:focus
+      color: $color-accent 
+    
+    // .nav__link--pagination
+    &--pagination
+      padding: ($rhythm-vertical / 2) $rhythm-horizontal
+      margin: ($rhythm-vertical / 2) 0
+
+    // .nav__link--current
+    &--current
+      color: $color-accent
+      &:hover, &:active, &:focus
+        color: lighten($color-accent, 10%)

@@ -1,8 +1,13 @@
-<h1>New <%= @model.to_s.titleize %></h1>
+<div class='title-bar'>
+  <h1 class='title-bar__text'><%= "Editing  #{@model.to_s.titleize}" %></h1>
+</div>
 
-<%= link_to 'Back', things_path(@model) %>
 
-<%= form_for([:admin, @thing]) do |form| %>
+<%= simple_form_for ([:admin, @thing]), { wrapper: :ceo } do |form| %>
   <%= render 'form', f: form %>
-  <%= form.button :submit %>
+
+  <div class='list__item list__item--form'>
+    <%= link_to 'Cancel', thing_path(@model, @thing), class: 'button', data: { confirm: "Are you sure? Nothing in this form will be saved." } %>
+    <%= form.button :submit, class: 'button' %>
+  </div>
 <% end %>
