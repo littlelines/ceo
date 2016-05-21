@@ -19,13 +19,12 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'rails', '>= 4'
   s.add_dependency 'autoprefixer-rails'
-  s.add_dependency 'sassc-rails'
   s.add_dependency 'inline_svg'
+  s.add_dependency 'sassc-rails'
   s.add_dependency 'simple_form'
 
   s.add_development_dependency 'capybara'
-  # s.add_development_dependency 'guard'
-  # s.add_development_dependency 'guard-minitest'
+  s.add_development_dependency 'maxitest'
   s.add_development_dependency 'minitest'
   s.add_development_dependency 'pg'
   s.add_development_dependency 'poltergeist'

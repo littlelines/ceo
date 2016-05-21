@@ -3,15 +3,12 @@ module CEO
   #
   # Examples
   #
-  #   iterator = CEO::Iterator.new(Apple, current_page: filters: { only: [:id, :name] })
+  #   iterator = CEO::Iterator.new(Apple, current_page: 2, filters: { only: [:id, :name] })
   #   iterator.total_pages
   #   # => 7
   #   iterator.current_page
   #   # => 2
   class Iterator
-    # Public: Returns the current page.
-    attr_reader :current_page
-
     # Public: Returns the total pages paginated.
     attr_reader :total_pages
 
@@ -147,6 +144,7 @@ module CEO
       things.select { |thing| whitelist.include? thing }
     end
 
+    # Public: Returns the current page.
     def current_page
       (@options[:current_page] || 1).to_i
     end
