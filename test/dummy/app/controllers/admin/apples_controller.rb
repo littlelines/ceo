@@ -1,5 +1,5 @@
 module Admin
-  class ApplesController < AdminController
+  class ApplesController < CEOController
     # CRUD!
     def show
       super(only: [:id, :name])

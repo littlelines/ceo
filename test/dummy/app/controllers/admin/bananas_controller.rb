@@ -1,4 +1,4 @@
 module Admin
-  class BananasController < AdminController
+  class BananasController < CEOController
   end
 end
