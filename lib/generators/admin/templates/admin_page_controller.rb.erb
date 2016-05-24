@@ -1,5 +1,7 @@
 module Admin
-  class <%= @controller.camelize %>Controller < AdminController
+  class <%= @controller.camelize %>Controller < CEOController
     # leave empty for basic CRUD
+    # change CEOController to AdminController to override basic CRUD
+    # functionality
   end
 end

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   end
 
   admin_for :bananas
+  admin_for :oranges
 
   admin_for :not_obvious, controller: :other do
     collection do
