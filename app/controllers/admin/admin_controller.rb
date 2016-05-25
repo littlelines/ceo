@@ -3,7 +3,7 @@ module Admin
   class AdminController < ::ApplicationController
     before_action :authenticate_admin!
 
-    layout "admin"
+    layout "admin/application"
 
     def dashboard
       render 'admin/dashboard'
@@ -15,6 +15,7 @@ module Admin
 
     private
 
-    def authenticate_admin!;end
+    def authenticate_admin!
+    end
   end
 end
