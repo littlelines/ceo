@@ -13,9 +13,8 @@ module Admin
       render 'admin/styleguide'
     end
 
-    private
-
     def authenticate_admin!
+      super rescue false
     end
   end
 end
