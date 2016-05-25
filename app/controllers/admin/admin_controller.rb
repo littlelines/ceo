@@ -13,8 +13,11 @@ module Admin
       render 'admin/styleguide'
     end
 
+    # Defers to #authenticate_admin! in ApplicationController if it is defined
+    # If not, returns false/does nothing
     def authenticate_admin!
       super rescue false
     end
   end
 end
+
