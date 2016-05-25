@@ -27,15 +27,13 @@
 
         <td class='table--responsive__function-cell'>
           <%= link_to send(:"edit_admin_#{@model_name}_path", thing['ID']), class: 'table__link' do %>
-            pencil
-            <!-- < %= inline_svg "pencil.svg" %> -->
+            <%= inline_svg "admin/pencil.svg" %>
           <% end %>
         </td>
 
         <td class='table--responsive__function-cell'>
           <%= link_to send(:"admin_#{@model_name}_path", thing['ID']), class: 'table__link' do %>
-            eye
-            <!-- < %= inline_svg "eye.svg" %> -->
+            <%= inline_svg "admin/eye.svg" %>
           <% end %>
         </td>
       </tr>
