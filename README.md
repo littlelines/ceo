@@ -33,11 +33,10 @@ For basic CRUD that just works:
     $ bundle exec rails generate admin apples
 
 This will create:
-  app/controllers/admin/apples_controller.rb
-  app/views/admin/apples/_form.html.erb
+  + *app/controllers/admin/apples_controller.rb*
+  + *app/views/admin/apples/_form.html.erb*
 
-And route:
-  `admin_for :apples`
+And route: `admin_for :apples`
 
 Creating all apple resource routes namespaced under admin.
 
@@ -51,7 +50,7 @@ it will automatically be called for all actions in all admin controllers.
 ### Getting started
 
 Start up your server and visit [http://localhost:3000/admin/apples](). Customize
-the apples form in app/views/admin/apples/_form.html.erb, where:
+the apples form in *app/views/admin/apples/_form.html.erb*, where:
 
     <%= # "f" is exposed as a form object %>
 
@@ -60,7 +59,8 @@ destroy apples at will.
 
 ### Customization
 
-To customize what attributes appear at /admin/apples and/or /admin/apples/:id,
+To customize what attributes appear at */admin/apples* and/or
+*/admin/apples/:id*,
 you can pass a hash using the keys `:only` (show ONLY these attributes),
 `:except` (show everything EXCEPT these attributes), and/or `:query` (show
 attributes of associated objects).
@@ -69,7 +69,7 @@ Example:
 
 If `apple` responds to `name, product_id` and `apple has_many :seeds` and `seed` responds to `count`:
 
-app/controllers/admin/apples_controller.rb
+*app/controllers/admin/apples_controller.rb*
 
 ```ruby
   module Admin
