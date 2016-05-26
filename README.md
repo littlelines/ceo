@@ -53,6 +53,9 @@ the apples form in *app/views/admin/apples/_form.html.erb*, where:
 
     <%= # "f" is exposed as a form object %>
 
+[SimpleForm](https://github.com/plataformatec/simple_form) can be used here to
+maintain style consistency with the rest of the provided admin panel.
+
 Once this form is fleshed out, you will be able to create, read, update, and
 destroy apples at will.
 
