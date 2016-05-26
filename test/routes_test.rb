@@ -4,7 +4,7 @@ describe 'routes' do
   include AcceptanceHelper
 
   it 'gets dashboard' do
-    admin_exists_for? '/dashboard'
+    admin_exists_for? '/'
   end
 
   it 'gets styleguide' do
