@@ -44,8 +44,7 @@ Creating all apple resource routes namespaced under admin.
 
 Every generated controller will call `:authenticate_admin!` before every action.
 This does nothing if `:authenticate_admin!` is not defined in your application.
-Write your own `:authenticate_admin!` method in your `ApplicationController` and
-it will automatically be called for all actions in all admin controllers.
+You must write your own `:authenticate_admin!` method in your `ApplicationController`.
 
 ### Getting started
 
