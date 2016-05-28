@@ -1,5 +1,12 @@
 # Changelog
 
+* __v0.2.0__
+    * Two controllers are now available, `CEOController` and
+      `AdminController`. All main functionality is now in `CEOController`.
+    * Authentication is now enabled by default via the
+      `#authenticate_admin!` method.
+    * A styleguide and dashboard are now available by
+      default. (see `/admin/styleguide` & `/admin/dashboard`)
 * __v0.1.7__
     * Allows passing options to `admin_for`, just like with `resources`.
 * __v0.1.6__
