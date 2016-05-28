@@ -1,5 +1,8 @@
-# Public: A base controller for admin pages
 module Admin
+  # Public: A base controller for admin pages.
+  #
+  # This class is the meat of CEO. It contains the helper methods and pages
+  # that make CEO what it is.
   class CEOController < AdminController
     before_action :find_thing, only: [:show, :edit, :update, :destroy]
 
@@ -8,7 +11,6 @@ module Admin
     helper_method :new_thing_path
     helper_method :edit_thing_path
     helper_method :thing_page_path
-    try(:include, ::AdminMiddleware)
 
     # GET /things
     # Public: Indexes all things in the model.
