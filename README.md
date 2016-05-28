@@ -42,9 +42,9 @@ Creating all apple resource routes namespaced under admin.
 
 ### Authentication
 
-Every generated controller will call `:authenticate_admin!` before every action.
-This does nothing if `:authenticate_admin!` is not defined in your application.
-You must write your own `:authenticate_admin!` method in your `ApplicationController`.
+Every generated controller will call `#authenticate_admin!` before every action.
+This does nothing if `#authenticate_admin!` is not defined in your application.
+You must write your own `#authenticate_admin!` method in your `ApplicationController`.
 
 ### Getting started
 
@@ -62,37 +62,37 @@ destroy apples at will.
 ### Customization
 
 To customize what attributes appear at */admin/apples* and/or
-*/admin/apples/:id*,
-you can pass a hash using the keys `:only` (show ONLY these attributes),
-`:except` (show everything EXCEPT these attributes), and/or `:query` (show
-attributes of associated objects).
+*/admin/apples/:id*, you can pass a hash using the keys `:only` (show
+__*only*__ these attributes), `:except` (show everything __*except*__ these
+attributes), and/or `:query` (show attributes of associated objects).
 
-Example:
+#### Example
 
-If `apple` responds to `name, product_id` and `apple has_many :seeds` and `seed` responds to `count`:
+`apple_instance` responds to `name` and `product_id` where `Apple`
+`has_many :seeds` and `Seed` responds to count.
 
 *app/controllers/admin/apples_controller.rb*
 
 ```ruby
-  module Admin
-    class ApplesController < CEOController
-      # Only shows ID, Name, and Seeds Count in admin index table
-      def index
-        super(
-          only: [:id, :name],
-          query: ['seeds.count']
-        )
-      end
+module Admin
+  class ApplesController < CEOController
+    # Only shows ID, Name, and Seed Count in admin#index table.
+    def index
+      super(
+        only: [:id, :name],
+        query: ['seeds.count']
+      )
+    end
 
-      def show
-        super(
-          # Displays all of apple's attributes as well as its seeds.count in
-          #   admin show
-          query: ['seeds.count']
-        )
-      end
+    def show
+      super(
+        # Displays all of apple's attributes as well as its seeds.count in
+        # admin#show.
+        query: ['seeds.count']
+      )
     end
   end
+end
 ```
 
 ### Further Customization
@@ -102,12 +102,19 @@ of working around a black box, simply inherit from `AdminController` instead of
 `CEOController` for a clean slate:
 
 ```ruby
-  module Admin
-    class ApplesController < AdminController
-      # Plain old Rails controller
-    end
+module Admin
+  class ApplesController < AdminController
+    # Plain old Rails controller
   end
+end
 ```
+
+### _Even Further_ Customization
+
+If none of these options is right for you, you can override or add to
+`AdminController` by simply creating a `AdminMiddleware` module in
+your Rails application path (we suggest services or initializers, but
+it's up to you).
 
 ### Styling
 
@@ -117,13 +124,17 @@ application.
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+After checking out the repo, run `bin/setup` to install
+dependencies. Then, run `rake test` to run the tests. You can also run
+`bin/console` for an interactive prompt that will allow you to
+experiment.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+To install this gem onto your local machine, run `bundle exec rake
+install`.
 
 ## TODO
-+ Allow option to generate views in HAML
-+ Make adding content/customizing dashboard easier
+* [ ] Allow option to generate views in HAML
+* [ ] Make adding content/customizing dashboard easier
 
 ## Contributing
 
