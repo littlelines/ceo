@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ceo (0.1.7)
+    ceo (0.2.0)
       autoprefixer-rails
       inline_svg
       rails (>= 4)
