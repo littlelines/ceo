@@ -22,7 +22,10 @@ class AdminGenerator < Rails::Generators::NamedBase
     end
 
     create_file "app/views/admin/#{@controller.underscore}/_form.html.erb", <<VIEW
-<% # "f" is exposed as a form object %>
+<% # "f" is exposed as a form object (example below) %>
+
+<%= f.input :name %>
+<%= f.button :submit %>
 VIEW
   end
 end
