@@ -2,13 +2,13 @@ module Admin
   # Public: Base admin system controller. Contains authentication, a dashboard, and a
   # style guide. Anything that must affect all admin pages should be added here.
   class AdminController < ::ApplicationController
-    # An AdminMiddleware module can be added to change any part of the
-    # base AdminController class' functionality.
-    try(:include, ::AdminMiddleware)
-
     before_action :authenticate_admin!
 
     layout "admin/application"
+
+    # An AdminMiddleware module can be added to change any part of the base
+    # AdminController class functionality
+    try(:include, ::AdminMiddleware)
 
     def dashboard
       render 'admin/dashboard'
