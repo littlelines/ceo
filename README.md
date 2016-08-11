@@ -122,6 +122,19 @@ For consistency in styling, you can find the CEO styleguide at
 [http://localhost:3000/admin/styleguide]() after installing CEO in your
 application.
 
+You can also override some defaults for the whole admin panel by setting up `AdminMiddleware`.
+
+```
+module AdminMiddleware
+  extend ActiveSupport::Concern
+
+  included do
+    layout 'my_admin'
+    before_action :my_method
+  end
+end
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install
