@@ -114,26 +114,25 @@ end
 If none of these options is right for you, you can override or add to
 `AdminController` by simply creating a `AdminMiddleware` module in
 your Rails application path (we suggest services or initializers, but
-it's up to you).
-
-### Styling
-
-For consistency in styling, you can find the CEO styleguide at
-[http://localhost:3000/admin/styleguide]() after installing CEO in your
-application.
-
-You can also override some defaults for the whole admin panel by setting up `AdminMiddleware`.
+it's up to you). By extending `ActiveSupport::Concern` you can override the
+provided default layout and additional functionality.
 
 ```
 module AdminMiddleware
   extend ActiveSupport::Concern
 
   included do
-    layout 'my_admin'
-    before_action :my_method
+    layout 'my_admin_layout'
+    before_action :my_admin_method
   end
 end
 ```
+
+### Styling
+
+For consistency in styling, you can find the CEO styleguide at
+[http://localhost:3000/admin/styleguide]() after installing CEO in your
+application.
 
 ## Development
 
