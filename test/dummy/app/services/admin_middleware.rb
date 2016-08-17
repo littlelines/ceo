@@ -1,9 +1,10 @@
 module AdminMiddleware
   extend ActiveSupport::Concern
 
-  included do
-    layout 'application'
-  end
+  # Will override admin/application layout
+  # included do
+  #   layout 'application'
+  # end
 
   def foo_return
     foo
