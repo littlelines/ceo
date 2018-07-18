@@ -1,3 +1,3 @@
-class Banana < ActiveRecord::Base
+class Banana < ApplicationRecord
   validates :name, presence: true
 end

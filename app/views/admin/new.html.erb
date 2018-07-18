@@ -2,7 +2,7 @@
   <h1 class='title-bar__text'><%= "New #{@thing_model}" %></h1>
 </div>
 
-<%= simple_form_for ([:admin, @thing]), { wrapper: :ceo } do |form| %>
+<%= simple_form_for [:admin, @thing], wrapper: :ceo do |form| %>
   <%= render 'form', f: form %>
 
   <div class="list__item list__item--form">

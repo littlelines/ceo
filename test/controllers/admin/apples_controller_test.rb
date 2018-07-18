@@ -16,7 +16,7 @@ class Admin::ApplesControllerTest < ActionController::TestCase
     let(:apple) { Apple.create(name: 'Granny Smith') }
 
     it 'should be successful' do
-      get :show, id: apple.id
+      get :show, params: { id: apple.id }
       assert_response :success
     end
   end
@@ -25,7 +25,7 @@ class Admin::ApplesControllerTest < ActionController::TestCase
     let(:apple) { Apple.create(name: 'Granny Smith') }
 
     it 'should be successful' do
-      get :edit, id: apple.id
+      get :edit, params: { id: apple.id }
       assert_response :success
     end
   end
