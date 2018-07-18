@@ -114,7 +114,19 @@ end
 If none of these options is right for you, you can override or add to
 `AdminController` by simply creating a `AdminMiddleware` module in
 your Rails application path (we suggest services or initializers, but
-it's up to you).
+it's up to you). By extending `ActiveSupport::Concern` you can override the
+provided default layout and additional functionality.
+
+```
+module AdminMiddleware
+  extend ActiveSupport::Concern
+
+  included do
+    layout 'my_admin_layout'
+    before_action :my_admin_method
+  end
+end
+```
 
 ### Styling
 
