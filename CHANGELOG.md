@@ -1,5 +1,7 @@
 # Changelog
 
+* __v0.3.0__
+    * Updated gems and Ruby syntax for usage with Rails 5 and Ruby 2.5.
 * __v0.2.0__
     * Two controllers are now available, `CEOController` and
       `AdminController`. All main functionality is now in `CEOController`.

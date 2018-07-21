@@ -1,6 +1,6 @@
 require 'ostruct'
 
-class Fruit < ActiveRecord::Base
+class Fruit < ApplicationRecord
   has_many :apples
 
   def foo
