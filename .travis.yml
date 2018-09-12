@@ -17,6 +17,7 @@ env:
   - "RAILS_VERSION=4.0"
   - "RAILS_VERSION=4.1"
   - "RAILS_VERSION=4.2"
+  - "RAILS_VERSION=5.0"
 
 before_script:
   - psql -c 'create database dummy_test;' -U postgres

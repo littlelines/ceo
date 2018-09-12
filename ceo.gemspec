@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
   s.test_files = Dir['test/**/*']
 
-  s.add_dependency 'rails', '>= 4'
+  s.add_dependency 'rails', '> 4'
   s.add_dependency 'autoprefixer-rails'
   s.add_dependency 'inline_svg'
   s.add_dependency 'sassc-rails'
